@@ -26,11 +26,23 @@ public class UserAccountService {
         return Response.status(HttpStatus.CREATED).entity(userAccount).build();
     }
 
-    public Response getAllCustomers() {
+    public Response findAllUsers() {
         List<UserAccount> userAccounts = userAccountRepository.listAll();
         if (!userAccounts.isEmpty()) {
             return Response.status(HttpStatus.OK).entity(userAccounts).build();
         }
         return Response.status(HttpStatus.NOT_FOUND).entity("NO HAY CLIENTES").build();
+    }
+
+    public Response findUserById(String id) {
+        return null;
+    }
+
+    public Response updateUser() {
+        return null;
+    }
+
+    public Response deleteUserById() {
+        return null;
     }
 }

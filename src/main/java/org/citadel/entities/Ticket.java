@@ -10,11 +10,12 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.Setter;
+import org.citadel.entities.DTOs.UpdateTicketDTO;
 import org.citadel.entities.enums.TicketStatus;
 
-import static org.citadel.entities.utils.TicketCodeGenerator.*;
-
 import java.time.LocalDateTime;
+
+import static org.citadel.entities.utils.TicketCodeGenerator.generateUniqueCodeTicket;
 
 @Getter
 @Entity
@@ -56,23 +57,27 @@ public class Ticket extends PanacheEntity {
         updateAt = LocalDateTime.now();
     }
 
-    public void setStatusGenerated() {
-        status = TicketStatus.GENERATED;
+    public void updateTicketFrom(UpdateTicketDTO ticketDTO) {
+        this.setNickname(ticketDTO.getNickname());
+        this.setEmail(ticketDTO.getEmail());
+        this.setPhone(ticketDTO.getPhone());
+        this.setDescription(ticketDTO.getDescription());
+        this.setStatus(ticketDTO.getStatus());
     }
 
-    public void setStatusCancelled() {
-        status = TicketStatus.CANCELLED;
+    public boolean isGenerated() {
+        return this.getStatus() == TicketStatus.GENERATED;
+    }
+
+    public boolean isActivated() {
+        return this.getStatus() == TicketStatus.ACTIVATED;
     }
 
     public void setStatusActivated() {
-        status = TicketStatus.ACTIVATED;
+        this.setStatus(TicketStatus.ACTIVATED);
     }
 
-    public void setStatusDeleted() {
-        status = TicketStatus.DELETED;
-    }
-
-    public PanacheQuery<Ticket> findPaginatedTickets(int indexOfPage, int numberOfElements) {
+    public static PanacheQuery<Ticket> findPaginatedTickets(int indexOfPage, int numberOfElements) {
         Page page = new Page(indexOfPage - 1, numberOfElements);
         return Ticket.findAll(Sort.descending("createdAt")).page(page);
     }

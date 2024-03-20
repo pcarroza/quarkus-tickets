@@ -7,7 +7,6 @@ import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
-
 import org.citadel.entities.UserAccount;
 import org.citadel.services.UserAccountService;
 
@@ -31,6 +30,6 @@ public class UserAccountResource {
     @GET
     @Path("/get-all-user-accounts")
     public Response getAllUserAccounts() {
-        return userAccountService.getAllCustomers();
+        return userAccountService.findAllUsers();
     }
 }

@@ -1,4 +1,4 @@
-package org.citadel.services.response;
+package org.citadel.entities.DTOs;
 
 import io.quarkus.hibernate.orm.panache.PanacheQuery;
 

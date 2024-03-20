@@ -4,5 +4,6 @@ public enum TicketStatus {
     GENERATED,
     ACTIVATED,
     CANCELLED,
+    PROCESSED,
     DELETED
 }

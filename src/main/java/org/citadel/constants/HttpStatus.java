@@ -12,4 +12,6 @@ public class HttpStatus {
 
     public static final int NO_CONTENT = Response.Status.NO_CONTENT.getStatusCode();
 
+    public static final int CONFLICT = Response.Status.CONFLICT.getStatusCode();
+
 }

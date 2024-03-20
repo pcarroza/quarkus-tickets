@@ -15,7 +15,7 @@ public class Event {
     @GeneratedValue(strategy = GenerationType.TABLE)
     private Long id;
 
-    @Column(name = "NameOfEvent", length = 100)
+    @Column(name = "nameOfEvent", length = 100)
     private String nameOfEvent;
 
     @Column(length = 255)
